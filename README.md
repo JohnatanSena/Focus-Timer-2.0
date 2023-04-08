@@ -13,7 +13,7 @@ Nesse aplicativo de cronomêtro com a técnica pomodoro. Será apresentado uma p
 - Na versão 2.0, possui 4 cards com sons de temas especificos e também vai possuir 2 buttons para adicionar + 5 minutos ou remover - 5 minutos. 
 - Nessa versão o usuário não será possível escolher um valor no cronômetro específico, seguirá a técnica de pomodoro padrão (25 minutos).
 
-# Nessa etapa uitlizei alguns conceitos em JS e CSS:
+# Nessa etapa apliquei alguns conceitos em JS e CSS:
 - [x]  Utilização de variáveis no CSS;
 - [x]  Utilização do `display: grid`;
 - [x]  Utilização da DOM no navegador;
