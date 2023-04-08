@@ -17,6 +17,7 @@ body {
   font-family: var(--ff-roboto);
   color: var(--fc-black)
 }
+                   /*PARTE do MAIN do Display*/
 main {
   height: 100vh;
   display: flex;
@@ -65,5 +66,7 @@ main {
 .cards button:focus {
   background: var(--bg-cardsFocus);
 }
-
+.hide{
+  display: none;
+}
 
