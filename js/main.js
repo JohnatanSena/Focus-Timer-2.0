@@ -1,13 +1,13 @@
   const buttonPlay = document.querySelector('.btnPlay');
   const buttonPause = document.querySelector('.btnPause');
+  const buttonStop = document.querySelector('.btnStop')
   let minutesDisplay = document.querySelector('.minutes');
   let secondsDisplay = document.querySelector('.seconds');
   let buttonSum = document.querySelector('.btnSum')
   let buttonSubtraction = document.querySelector('.btnSubtraction')
-  
-  
- 
-  
+  let timerTimeOut
+  let resetMinutes = minutesDisplay.textContent
+
   function resetButtonsControls(){
     buttonPause.classList.add('hide')
     buttonPlay.classList.remove('hide')
@@ -17,7 +17,7 @@
     secondsDisplay.textContent = String(seconds).padStart(2, 0)
   }
   function countDown(){
-    setTimeout(function(){
+    timerTimeOut = setTimeout(function(){
       let minutes = minutesDisplay.textContent;
       let seconds = secondsDisplay.textContent;
       
@@ -37,7 +37,6 @@
  
   }
   function sumFive(){
-   
     minutesDisplay.textContent = String(Number(minutesDisplay.textContent) + 5).padStart(2, '0')
   }
   function fiveSubtraction(){
@@ -56,6 +55,7 @@
   })
   buttonPause.addEventListener('click', () => {
     resetButtonsControls()
+    clearInterval(timerTimeOut)
   })
   buttonSum.addEventListener('click', () =>{
    sumFive()
@@ -63,4 +63,10 @@
   buttonSubtraction.addEventListener('click', () => {
     fiveSubtraction()
   })
+  buttonStop.addEventListener('click', () =>{
+    updateDisplay(resetMinutes, 0)
+    clearInterval(timerTimeOut)
+    resetButtonsControls()
+  })
+
   
