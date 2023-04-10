@@ -1,72 +1,26 @@
-  const buttonPlay = document.querySelector('.btnPlay');
-  const buttonPause = document.querySelector('.btnPause');
-  const buttonStop = document.querySelector('.btnStop')
-  let minutesDisplay = document.querySelector('.minutes');
-  let secondsDisplay = document.querySelector('.seconds');
-  let buttonSum = document.querySelector('.btnSum')
-  let buttonSubtraction = document.querySelector('.btnSubtraction')
-  let timerTimeOut
-  let resetMinutes = minutesDisplay.textContent
+ import { Timer } from './timer.js'
+ import { Controls } from "./controls.js"
+ import { Events } from "./events.js"
+ import {
+  buttonPlay,
+    buttonPause,
+    buttonStop,
+    minutesDisplay,
+    secondsDisplay,
+    buttonSum,
+    buttonSubtraction,
+    resetMinutes,
+ } from './elements.js'
 
-  function resetButtonsControls(){
-    buttonPause.classList.add('hide')
-    buttonPlay.classList.remove('hide')
-  }
-  function updateDisplay(minutes, seconds){
-    minutesDisplay.textContent = String(minutes).padStart(2, 0)
-    secondsDisplay.textContent = String(seconds).padStart(2, 0)
-  }
-  function countDown(){
-    timerTimeOut = setTimeout(function(){
-      let minutes = minutesDisplay.textContent;
-      let seconds = secondsDisplay.textContent;
-      
-     
-      if(minutes <= 0 && seconds <= 0){ 
-        resetButtonsControls()
-        return 
-      }
-
-      if(seconds <= 0 ){
-      seconds = 3;
-      --minutes
-      }
-      updateDisplay(minutes, seconds -1)
-      countDown()
-    }, 1000)
- 
-  }
-  function sumFive(){
-    minutesDisplay.textContent = String(Number(minutesDisplay.textContent) + 5).padStart(2, '0')
-  }
-  function fiveSubtraction(){
-    let minutes = Number(minutesDisplay.textContent)
-    if(minutes === 0){
-      alert(`Cronomêtro já está 00:00`)
-      return
-    }
-    minutesDisplay.textContent = String(Number(minutesDisplay.textContent) - 5).padStart(2, '0')
-    
-  }
-  buttonPlay.addEventListener('click', () => {
-    buttonPlay.classList.add('hide')
-    buttonPause.classList.remove('hide')
-    countDown()
-  })
-  buttonPause.addEventListener('click', () => {
-    resetButtonsControls()
-    clearInterval(timerTimeOut)
-  })
-  buttonSum.addEventListener('click', () =>{
-   sumFive()
-  })
-  buttonSubtraction.addEventListener('click', () => {
-    fiveSubtraction()
-  })
-  buttonStop.addEventListener('click', () =>{
-    updateDisplay(resetMinutes, 0)
-    clearInterval(timerTimeOut)
-    resetButtonsControls()
+ const controls = Controls({
+  buttonPause,
+  buttonPlay
+ })
+  const timer = Timer({
+    resetButtonsControls: controls.resetButtonsControls,
+    minutesDisplay, 
+    secondsDisplay,
   })
 
+  Events({timer})
   
