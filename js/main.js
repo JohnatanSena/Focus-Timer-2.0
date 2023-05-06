@@ -11,7 +11,8 @@
     buttonSubtraction,
     resetMinutes,
  } from './elements.js'
-
+ import { Sounds } from "./sounds.js"
+ 
  const controls = Controls({
   buttonPause,
   buttonPlay
@@ -22,5 +23,6 @@
     secondsDisplay,
   })
 
-  Events({timer})
+  const sounds = Sounds()
+  Events({timer, sounds})
   

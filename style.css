@@ -8,7 +8,7 @@
   --bg-body: hsla(0, 0%, 100%, 1);
   --bg-cards: hsla(240, 9%, 89%);
   --bg-cardsFocus: hsla(194, 97%, 31%, 1);
-  --bg-inputs: #323238;
+  --bg-inputs: rgb(0, 0, 0);
   --fc-black:hsla(240, 6%, 21%, 1);
   --ff-roboto: 'Roboto', sans-serif;
 
@@ -64,8 +64,11 @@ main {
   background: var(--bg-cards);
   border-radius: 2.4rem
 }
-.cards button:focus {
+button.clicked  {
   background: var(--bg-cardsFocus);
+}
+.clicked svg path {
+  fill: #fff;
 }
 .hide{
   display: none;
@@ -74,17 +77,34 @@ main {
   position: relative;
 }
 .card input {
+  background-color: var(--bg-inputs);
+
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+
+  height: 0.4rem;
+  border-radius: 1rem;
+
   position: absolute;
   bottom: 0;
   left: 2.4rem;
   right: 2.4rem;
   bottom: 2.4rem;
-  background-color: var(--bg-inputs);
-  height: 0.6rem;
-  border-radius: 1rem;
 }
 .card input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background-color: var(--bg-inputs);
+
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border-radius: 1rem;
+}
+.clicked ~ input {
+  background-color: #fff;
+}
+.clicked ~ input::-webkit-slider-thumb {
+  background-color: #fff;
 }
